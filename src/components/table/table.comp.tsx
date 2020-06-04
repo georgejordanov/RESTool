@@ -7,6 +7,7 @@ import { Button } from '../button/button.comp';
 import { InfiniteLoader } from '../infiniteLoader/infiniteLoader.comp';
 import { IPaginationState } from '../../common/models/states.model';
 import { Pagination } from '../pagination/pagination.comp';
+import moment from 'moment';
 
 import './table.scss';
 
@@ -62,6 +63,8 @@ export const Table = ({ items, fields, pagination, callbacks, customActions, cus
         return <a href={url} target="_blank" rel="noopener noreferrer">{origField.urlLabel || value}</a>;
       case 'colorbox':
         return <div className="colorbox" style={{ backgroundColor: value }}></div>;
+      case 'dateFromNow':
+        return <span>{moment(value).fromNow()}</span>;
       default:
         return value;
     }

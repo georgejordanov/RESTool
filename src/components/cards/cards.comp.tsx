@@ -7,6 +7,7 @@ import { IPaginationState } from '../../common/models/states.model';
 import { dataHelpers } from '../../helpers/data.helpers';
 import { Button } from '../button/button.comp';
 import { Pagination } from '../pagination/pagination.comp';
+import moment from 'moment';
 
 import './cards.scss';
 
@@ -64,6 +65,8 @@ export const Cards = ({ items, fields, callbacks, customActions, customLabels, p
         return <a href={url} target="_blank" rel="noopener noreferrer">{origField.urlLabel || value}</a>;
       case 'colorbox':
         return <div className="colorbox" style={{ backgroundColor: value }}></div>;
+      case 'dateFromNow':
+        return <span>{moment(value).fromNow()}</span>;
       default:
         return value;
     }
